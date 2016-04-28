@@ -1,0 +1,19 @@
+{% extends "basic.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block heading %}
+Contact Us
+{% endblock %}
+{% block page_content %}
+{% if success %}
+    <div class="alert alert-success fade in">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Thank You!</strong> We will be in contact shortly
+    </div>
+{% else %}
+<div id="contentdiv">
+    <form class="form form-horizontal" action="{{ url_for('contact') }}" method=post>
+        {{ wtf.quick_form(form) }}
+    </form>
+</div>
+{% endif %}
+{% endblock %}

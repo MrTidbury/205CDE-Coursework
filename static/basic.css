@@ -1,0 +1,17 @@
+body {
+    background-image: url("graphy.png");
+}
+#circles{
+    text-align: center;
+}
+#Bodybg{
+    border-radius: 25px;
+    background: #FFFFFF;
+    padding: 20px; 
+    padding-top: 5px;
+}
+#contentdiv{
+    box-sizing: border-box;
+    padding-left: 30px;
+    padding-right: 30px;
+}
