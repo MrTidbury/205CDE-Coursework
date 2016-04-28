@@ -19,6 +19,7 @@ app.config.update(
 	MAIL_PASSWORD = 'email001',
 	SQLALCHEMY_TRACK_MODIFICATIONS = False
 	)
+
 mail=Mail(app)
 db.init_app(app)
 app.secret_key= '1234thisisasecurestringihope1234'
