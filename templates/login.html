@@ -1,11 +1,11 @@
 {% extends "basic.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 {% block heading %}
-Sign Up Below
+Please Login
 {% endblock %}
 {% block page_content %}
 <div id="contentdiv">
-    <form class="form form-horizontal" action="{{ url_for('signup') }}" method=post>
+    <form class="form form-horizontal" action="{{ url_for('login') }}" method=post>
         {{ wtf.quick_form(form) }}
     </form>
 </div>

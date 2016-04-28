@@ -4,7 +4,7 @@ from flask import *
 from flask_bootstrap import Bootstrap
 import flask_bootstrap
 from flask_mail import Mail, Message
-from forms import ContactForm, SignupForm
+from forms import ContactForm, SignupForm, loginForm
 from models import db, User
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
@@ -76,16 +76,33 @@ def signup():
   elif request.method == 'GET':
     return render_template('signup.html', form=form)
 
+@app.route('/login', methods=['GET','POST'])
+def login():
+  form = loginForm()
+  if request.method == 'POST':
+    if form.validate() == False:
+      return render_template('login.html',form=form)
+    else:
+      session['email'] = form.email.data
+      return redirect(url_for('profile'))
+  elif request.method == 'GET':
+    return render_template('login.html', form=form)
+  
+@app.route('/signout', methods=['GET','POST'])
+def signout():
+  session.pop('email', None)
+  return redirect(url_for('index'))
+
 @app.route('/profile')
 def profile():
  
   if 'email' not in session:
-    return redirect(url_for('signin'))
+    return redirect(url_for('login'))
  
   user = User.query.filter_by(email = session['email']).first()
  
   if user is None:
-    return redirect(url_for('signin'))
+    return redirect(url_for('signup'))
   else:
     return render_template('profile.html')
     
