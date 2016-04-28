@@ -4,9 +4,11 @@ from flask import *
 from flask_bootstrap import Bootstrap
 import flask_bootstrap
 from flask_mail import Mail, Message
-from forms import ContactForm
+from forms import ContactForm, SignupForm
+from models import db, User
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:email001@localhost/main'
 app.config.update(
 	DEBUG=True,
 	#EMAIL SETTINGS
@@ -14,9 +16,11 @@ app.config.update(
 	MAIL_PORT=26,
 	MAIL_USE_SSL=False,
 	MAIL_USERNAME = 'griffindesign@tidbury.xyz',
-	MAIL_PASSWORD = 'email001'
+	MAIL_PASSWORD = 'email001',
+	SQLALCHEMY_TRACK_MODIFICATIONS = False
 	)
 mail=Mail(app)
+db.init_app(app)
 app.secret_key= '1234thisisasecurestringihope1234'
 
 @app.route('/')
@@ -30,8 +34,8 @@ def about():
 @app.route('/projects')
 def projects():
     return render_template('basic.html', name="PROJECTS")
-@app.route('/contact', methods=['GET', 'POST'])
 
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
     form=ContactForm()
     if request.method == 'POST':
@@ -56,6 +60,35 @@ def contact():
 def page_not_found(e):
     return render_template('basic.html',name="Oh,dear this page doesnt exist"), 404
 
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+  form = SignupForm()
+  if request.method == 'POST':
+    if form.validate() == False:
+      return render_template('signup.html', form=form)
+    else:
+      newuser = User(form.firstname.data, form.lastname.data, form.email.data, form.password.data)
+      db.session.add(newuser)
+      db.session.commit()
+      session['email'] = newuser.email
+      return redirect(url_for('profile'))
+   
+  elif request.method == 'GET':
+    return render_template('signup.html', form=form)
+
+@app.route('/profile')
+def profile():
+ 
+  if 'email' not in session:
+    return redirect(url_for('signin'))
+ 
+  user = User.query.filter_by(email = session['email']).first()
+ 
+  if user is None:
+    return redirect(url_for('signin'))
+  else:
+    return render_template('profile.html')
+    
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 8080))
     host = os.getenv('IP', '0.0.0.0')

@@ -1,0 +1,12 @@
+{% extends "basic.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block heading %}
+Profile
+{% endblock %}
+{% block page_content %}
+<div id="contentdiv">
+    <div class="jumbo">
+        <h3>This is {{ session['email']}}'s proflie</h3>
+    </div>
+</div>
+{% endblock %}

@@ -1,3 +1,6 @@
 venv/
 .c9/
 .git/
+.zip
+models.pyc
+forms.pyc
