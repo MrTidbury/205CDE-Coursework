@@ -6,7 +6,7 @@ Contact Us
 {% block page_content %}
 {% if success %}
     <div class="alert alert-success fade in">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <a href="{{ url_for('index') }}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       <strong>Thank You!</strong> We will be in contact shortly
     </div>
 {% else %}

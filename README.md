@@ -18,6 +18,8 @@ You should see some stuff pop up and then it is done, go and check GITHUB to mak
 ```sh
 $ virtualenv venv
 $ . venv/bin/activate
+mysql-ctl start
+
 ```
 To run the routes.py file, and thus the webserver, run this command
 ```sh

@@ -26,7 +26,11 @@ app.secret_key= '1234thisisasecurestringihope1234'
 
 @app.route('/')
 def index():
-    return render_template('homepage.html', name="Welcome to Griffin Design")
+    if 'email' in session:
+      user = (User.query.filter_by(email=session['email']).first()).firstname
+      return render_template('homepage.html', user=user)
+    else:
+      return render_template('homepage.html')
 
 @app.route('/about')
 def about():
