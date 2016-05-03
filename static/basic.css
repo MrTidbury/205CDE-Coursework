@@ -1,25 +1,25 @@
-body {
-    background-image: url("graphy.png");
+body { 
+    background-image: url("graphy.png"); /* set the background image*/
     padding-bottom: 20px
 }
-#circles{
+#circles{ /*The div that the blue circles sit in, this centres the images*/
     text-align: center;
 }
-#Bodybg{
+#Bodybg{ /*The white box that all of the content sits in*/
     border-radius: 25px;
     background: #FFFFFF;
     padding: 20px; 
     padding-top: 5px;
 }
-#contentdiv{
+#contentdiv{                /* the div that all contents reside in, adds padding so that it does not touch the edge of the white box*/
     box-sizing: border-box;
     padding-left: 30px;
     padding-right: 30px;
 }
-.img-center {
+.img-center {  /* to centre images*/
 	margin: 0 auto;
 }
-#tablediv {
+#tablediv {        /* set the div to contain the table on profile.html*/
     max-width: 500px;
     margin: auto;
     text-align: center;
