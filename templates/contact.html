@@ -1,18 +1,18 @@
 {% extends "basic.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/wtf.html" as wtf %} <!-- import WTF forms to this template to make the form -->
 {% block heading %}
 Contact Us
 {% endblock %}
 {% block page_content %}
-{% if success %}
-    <div class="alert alert-success fade in">
+{% if success %} <!-- if the sucsess flag is marked as true-->
+    <div class="alert alert-success fade in"> <!-- bootstrap sucsess animated div with a close button -->
       <a href="{{ url_for('index') }}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       <strong>Thank You!</strong> We will be in contact shortly
     </div>
 {% else %}
 <div id="contentdiv">
-    <form class="form form-horizontal" action="{{ url_for('contact') }}" method=post>
-        {{ wtf.quick_form(form) }}
+    <form class="form form-horizontal" action="{{ url_for('contact') }}" method=post> <!-- creates the form -->
+        {{ wtf.quick_form(form) }} <!-- tell WTF forms to render the form 'form' (this is contactform as this was passed as an argument) -->
     </form>
 </div>
 {% endif %}
