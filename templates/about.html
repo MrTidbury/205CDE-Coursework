@@ -1,0 +1,43 @@
+{% extends "basic.html" %} 
+{% block heading %}
+<div id="contentdiv">About Us</div>
+{% endblock %} 
+{% block page_content %}
+<div id="contentdiv">
+    <p>Founded in 2002, Griffin Design is a Coventry based Web-Based design company based out of Coventry. We offer many different services with some of our most popular being website design, however we also offer other services including logo design or even a full redesign of your companies graphical presence.</p>
+    <blockquote >
+      <p>“We used Griffin Design to build a website for our business. We are very happy with the result! They listened to us at every step of the way and made sure that the website was just how we envisaged it. I would highly recommend them, very friendly and helpful staff”</p>
+      <footer>Lucy Read <cite title="Source Title">Lil Louie's Bakery</cite></footer>
+    </blockquote>
+    <p>By using the latest technologies, we here at Griffin Design can ensure that your website looks its best no matter what platform it is viewed on; from a Desktop PC, Tablet or Smart Phone. We believe that by making sure that your site is able to be viewed no matter the way it is viewed. All of our sites, including this one, are built around the latest Twitter Bootstrap 3 platform, incorporating bleeding-edge technologies including Python-Flask that allows for your site to handle customer information and send automated emails, so you don’t have to worry about it.</p>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">Our Team</h2>
+        </div>
+        <div class="col-lg-4 col-sm-6 text-center">
+            <img class="img-circle img-responsive img-center align-" src="{{url_for('.static', filename='employee1.jpg')}}" size="200px" alt="">
+            <h3>Rob Stevenson
+                    <small>Lead Designer</small>
+                </h3>
+            <p>What does Rob do? Well he is the man in charge of making sure that the work we do is the design of your dreams</p>
+        </div>
+        <div class="col-lg-4 col-sm-6 text-center">
+            <img class="img-circle img-responsive img-center" src="{{url_for('.static', filename='employee2.jpg')}}" alt="">
+            <h3>James Henry
+                    <small>Backend Wizard</small>
+                </h3>
+            <p>James, our resident backend wizard is the one that makes sure that your site not only looks great, but has all of the functionality that you could want</p>
+        </div>
+        <div class="col-lg-4 col-sm-6 text-center">
+            <img class="img-circle img-responsive img-center" src="{{url_for('.static', filename='employee3.jpg')}}" alt="">
+            <h3>Lisa Li
+                    <small>Customer Consultant</small>
+                </h3>
+            <p>We pride ourselves in the amazing customer service that we offer, and Lisa is one of our Customer Consultants that strive to provide that experience</p>
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+
+
+{% endblock %}

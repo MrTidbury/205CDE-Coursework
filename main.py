@@ -34,12 +34,7 @@ def index():
 
 @app.route('/about')
 def about():
-    return render_template('basic.html', name="ABOUT")
-
-@app.route('/projects')
-def projects():
-    return render_template('basic.html', name="PROJECTS")
-
+    return render_template('about.html')
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     form=ContactForm()
@@ -100,17 +95,25 @@ def signout():
 
 @app.route('/profile')
 def profile():
- 
   if 'email' not in session:
     return redirect(url_for('login'))
  
   user = User.query.filter_by(email = session['email']).first()
- 
+  firstname = user.firstname
+  lastname = user.lastname
   if user is None:
     return redirect(url_for('signup'))
   else:
-    return render_template('profile.html')
+    return render_template('profile.html', firstname=firstname, lastname=lastname)
+@app.route('/removeaccount')
+def removeaccount():
+    user = User.query.filter_by(email = session['email']).first()
+    db.session.delete(user)
+    session.pop('email', None)
+    db.session.commit()
     
+    return redirect(url_for('index'))
+
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 8080))
     host = os.getenv('IP', '0.0.0.0')

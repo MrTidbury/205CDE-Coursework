@@ -16,11 +16,12 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/about">About</a></li>
-                <li><a href="/projects">Projects</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About us</a></li>
                 <li><a href="/contact">Contact</a></li>
+                {% if 'email' in session %}
                 <li><a href="/profile">Profile</a></li>
-                
+                {% endif %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
               {% if 'email' not in session %}
@@ -37,7 +38,8 @@
 {% endblock %}
 {% block styles %}
 {{super()}}
-<link rel="stylesheet" href="{{url_for('.static', filename='basic.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='basic.css')}}">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 {% endblock %}
 {% block content %}
 <div class="container">

@@ -1,12 +1,35 @@
 {% extends "basic.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 {% block heading %}
+<div id="contentdiv">
 Profile
+</div>
 {% endblock %}
 {% block page_content %}
 <div id="contentdiv">
     <div class="jumbo">
-        <h3>This is {{ session['email']}}'s proflie</h3>
+        <p class="lead">This is your Personal profile, below you can see all of the information that we currnetly have stored about you. And, if you wish there is the option for you to remove your account from our database if you so wish. </p>
     </div>
+    <div id="tablediv">
+    <table class="table table-hover">
+    <tbody>
+      <tr>
+        <td>First Name</td>
+        <td>{{ firstname }}</td>
+      </tr>
+      <tr>
+        <td>Last Name</td>
+        <td>{{ lastname }}</td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>{{ session['email']}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <form action= "/removeaccount">
+    <input type="submit" class="btn btn-danger" value="Remove Account" id="submitbutton" onclick="return confirm('Are you sure you want to delete your account?')">
+  </form>
+  </div>
 </div>
 {% endblock %}
