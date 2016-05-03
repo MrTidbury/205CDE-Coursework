@@ -1,21 +1,21 @@
-{% extends "basic.html" %} 
+{% extends "basic.html" %} <!-- inheriting from the basic.html template -->
 {% block heading %}
-<div id="contentdiv">About Us</div>
+<div id="contentdiv">About Us</div> <!-- setting content -->
 {% endblock %} 
 {% block page_content %}
-<div id="contentdiv">
+<div id="contentdiv"> <!-- contentdiv controlls padding -->
     <p>Founded in 2002, Griffin Design is a Coventry based Web-Based design company based out of Coventry. We offer many different services with some of our most popular being website design, however we also offer other services including logo design or even a full redesign of your companies graphical presence.</p>
-    <blockquote >
+    <blockquote > <!-- bootstrap blockquote to highlight customer quote -->
       <p>“We used Griffin Design to build a website for our business. We are very happy with the result! They listened to us at every step of the way and made sure that the website was just how we envisaged it. I would highly recommend them, very friendly and helpful staff”</p>
       <footer>Lucy Read <cite title="Source Title">Lil Louie's Bakery</cite></footer>
     </blockquote>
     <p>By using the latest technologies, we here at Griffin Design can ensure that your website looks its best no matter what platform it is viewed on; from a Desktop PC, Tablet or Smart Phone. We believe that by making sure that your site is able to be viewed no matter the way it is viewed. All of our sites, including this one, are built around the latest Twitter Bootstrap 3 platform, incorporating bleeding-edge technologies including Python-Flask that allows for your site to handle customer information and send automated emails, so you don’t have to worry about it.</p>
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12"> <!-- using bootstaps collumns and rows to set the circles inline and make them responsive when the size of the window changes -->
             <h2 class="page-header">Our Team</h2>
         </div>
         <div class="col-lg-4 col-sm-6 text-center">
-            <img class="img-circle img-responsive img-center align-" src="{{url_for('.static', filename='employee1.jpg')}}" size="200px" alt="">
+            <img class="img-circle img-responsive img-center align" src="{{url_for('.static', filename='employee1.jpg')}}" size="200px" alt="">
             <h3>Rob Stevenson
                     <small>Lead Designer</small>
                 </h3>
@@ -37,7 +37,6 @@
         </div>
     </div>
 </div>
-<!-- /.row -->
 
 
 {% endblock %}
