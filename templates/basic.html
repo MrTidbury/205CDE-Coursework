@@ -1,6 +1,6 @@
-{% extends "bootstrap/base.html" %}
+{% extends "bootstrap/base.html" %} <!-- Makes use of the base bootstrap template -->
 
-{% block title %}Griffin Design{% endblock %}
+{% block title %}Griffin Design{% endblock %} <!-- set title -->
 
 {% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
@@ -20,11 +20,11 @@
                 <li><a href="/about">About us</a></li>
                 <li><a href="/contact">Contact</a></li>
                 {% if 'email' in session %}
-                <li><a href="/profile">Profile</a></li>
+                <li><a href="/profile">Profile</a></li> <!-- If the user is logged in (if the cookie exists) display the profile link -->
                 {% endif %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              {% if 'email' not in session %}
+              {% if 'email' not in session %}         <!-- If the user is logged in (if the cookie exists) display the logout link if they are not logged in display the login/signup links -->
               <li><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
               <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
               {% else %}
@@ -36,18 +36,18 @@
     </div>
 </div>
 {% endblock %}
-{% block styles %}
+{% block styles %} <!-- create a super block for linking the stylesheets and the favicon -->
 {{super()}}
 <link rel="stylesheet" href="{{url_for('static', filename='basic.css')}}">
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 {% endblock %}
 {% block content %}
-<div class="container">
-    <div id="Bodybg">
+<div class="container"> 
+    <div id="Bodybg"> <!-- sets the background image to the graph paper -->
         <div class="page-header" >
-            <h1>{% block heading %}{% endblock %}</h1>
+            <h1>{% block heading %}{% endblock %}</h1> <!-- Create a heading block for later templates to use -->
         </div>
-        {% block page_content %}{% endblock %}
+        {% block page_content %}{% endblock %} <!-- all of the other templates content goes in here-->
     </div>
 </div>
 {% endblock %}
