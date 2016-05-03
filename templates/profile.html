@@ -11,24 +11,24 @@ Profile
         <p class="lead">This is your Personal profile, below you can see all of the information that we currnetly have stored about you. And, if you wish there is the option for you to remove your account from our database if you so wish. </p>
     </div>
     <div id="tablediv">
-    <table class="table table-hover">
+    <table class="table table-hover"> <!-- Create a table to display customer data  -->
     <tbody>
       <tr>
         <td>First Name</td>
-        <td>{{ firstname }}</td>
+        <td>{{ firstname }}</td> <!-- these variables are passed on template render -->
       </tr>
       <tr>
         <td>Last Name</td>
-        <td>{{ lastname }}</td>
+        <td>{{ lastname }}</td> <!-- these variables are passed on template render -->
       </tr>
       <tr>
         <td>Email</td>
-        <td>{{ session['email']}}</td>
+        <td>{{ session['email']}}</td> <!-- these variables are passed on template render -->
       </tr>
     </tbody>
   </table>
-  <form action= "/removeaccount">
-    <input type="submit" class="btn btn-danger" value="Remove Account" id="submitbutton" onclick="return confirm('Are you sure you want to delete your account?')">
+  <form action= "/removeaccount"> <!-- this is the routing for removing the account-->
+    <input type="submit" class="btn btn-danger" value="Remove Account" id="submitbutton" onclick="return confirm('Are you sure you want to delete your account?')"> <!-- This button makes a pop up asking user to confirm thier actions if they click cancel it doesnt submit-->
   </form>
   </div>
 </div>
