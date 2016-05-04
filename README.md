@@ -21,7 +21,7 @@ $ . venv/bin/activate
 mysql-ctl start
 
 ```
-To run the routes.py file, and thus the webserver, run this command
+To run the main.py file, and thus the webserver, run this command
 ```sh
 $(venv) python main.py
 ```
